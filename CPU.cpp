@@ -90,11 +90,11 @@ class CU{
 
 
 		void print(){	
-			std::cout << inst<< std::endl;
-			std::cout << op<< std::endl;
-			std::cout << r_wr<< std::endl;
-			std::cout << r2<< std::endl;
-			std::cout << r3<< std::endl;
+			std::cout <<"inst - "<< inst<< std::endl;
+			std::cout << "op - "<< op<< std::endl;
+			std::cout << "r_wr - "<< r_wr<< std::endl;
+			std::cout << "r2 - "<< r2<< std::endl;
+			std::cout << "r3 - "<< r3<< std::endl;
 			
 			std::cout << std::bitset<sizeof(inst) * 4>(inst) << std::endl;
 			std::cout << std::bitset<sizeof(op) * 4>(op) << std::endl;
@@ -112,7 +112,7 @@ class CPU{
 			cu.fetch();
 			cu.decod();
 			cu.execute();
-		//	cu.print();
+			//cu.print();
 		}
 };
 
