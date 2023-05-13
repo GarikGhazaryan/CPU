@@ -1,12 +1,32 @@
 #include <iostream>
 #include <bitset>
 
+class SSD{
+
+	short ssd[20]={};
+	
+	public:
+
+		short read(int adres){
+			return ssd[adres];
+		}
+
+		void write(int adres, int data){
+			ssd[adres]=data;
+		}
+
+};
+
 class RAM{
 
 	short ram[20];
 	
 	public:
-
+		RAM(){
+			for(int i=0;i<20;i++){
+				ram[i]=0;
+			}
+		}
 		short read(int adres){
 			return ram[adres];
 		}
@@ -37,10 +57,10 @@ class ALU{
 			switch(op){
 				case 3:
 					return dat1+dat2;
-				case 1:
+				case 4:
 					return dat1-dat2;
-				case 2:
-					return dat1*dat2;
+				case 5:
+					return ~dat1;
 			}
 			return 0;
 		}
@@ -52,6 +72,7 @@ class CU{
 	RAM ram;
 	REG reg;
 	ALU alu;
+	SSD ssd;
 
 	public:
 		
@@ -81,12 +102,13 @@ class CU{
 				case 2:
 						ram.write(reg.read(2), 888);
 						break;
-				case 3:
+				default:	
 						reg.write(6,(ram.read(reg.read(3))));
 						reg.write(7,(ram.read(reg.read(4))));
-						reg.write(8, alu.perform(reg.read(1),reg.read(3),reg.read(4)));
+						reg.write(8, alu.perform(reg.read(1),reg.read(6),reg.read(7)));
 						ram.write(reg.read(2), reg.read(8));
 						break;
+
 			}
 		}
 
@@ -98,12 +120,16 @@ class CU{
 		}
 
 		void print(){	
+			std::cout<<"ram ";
 			for (int i=0;i<20;i++){
-					std::cout<<"ram "<<ram.read(i)<<std::endl;
+					std::cout<<ram.read(i)<<" ";
 			}
+			std::cout<<std::endl;
+			std::cout<<"reg ";
 			for (int i=0;i<10;i++){
-					std::cout<<"reg "<<reg.read(i)<<std::endl;
+					std::cout<<reg.read(i)<<" ";
 			}
+			std::cout<<std::endl;
 		}
 };
 
@@ -122,10 +148,11 @@ class CPU{
 
 
 int main(){
-		short all_data[10]={6912, 11264, 15036,};
+		
+		short all_data[]={6912, 11264, 15036,19900,24252};
 		CPU cpu;
 		cpu.load(all_data);
-		for(int i=0;i<3;i++){
+		for(int i=0;i<5;i++){
 		cpu.exe();
 		}
 
