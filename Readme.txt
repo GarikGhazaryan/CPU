@@ -5,7 +5,7 @@ CPU model works on this principle
 First we have an array of instructions, when Load() is called,
 	the instructions are loaded into ram at the addresses allocated for instructions one by one.
 	(in this case, the addresses for instructions start from 0 to 9).
-	After that, exe () is called, it starts the process, which begins with fetch,
+	After that, exe() is called, it starts the process, which begins with fetch,
  	after which the first instruction is copied from Ram to the zero register.
 	Instructions will be copied one by one to the zero register after the execution of the previous instruction.
 
