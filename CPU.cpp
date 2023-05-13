@@ -5,12 +5,6 @@ class RAM{
 
 	short ram[20];
 	
-//	int data_wr;
-//	int data_r2=8;
-//	int data_r3=9;
-//	int instr1=9999;
-//	int instr2=7777;
-//	int instr3=444;
 	public:
 
 		short read(int adres){
