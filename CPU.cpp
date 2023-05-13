@@ -2,144 +2,137 @@
 #include <bitset>
 
 class RAM{
-	int data_wr;
-	int data_r2=8;
-	int data_r3=9;
-	int instr1=9999;
-	int instr2=7777;
-	int instr3=444;
+
+	short ram[20];
+	
+//	int data_wr;
+//	int data_r2=8;
+//	int data_r3=9;
+//	int instr1=9999;
+//	int instr2=7777;
+//	int instr3=444;
 	public:
 
-		int read(int adres){
-			switch(adres){
-				case 55:
-					return data_wr;
-				case 0:
-					return data_r2;
-				case 15:
-					return data_r3;
-				case 6:
-					return data_r2;
-				case 1:
-					return data_r3;
-				case 11:
-					return data_r2;
-				case 12:
-					return data_r3;
-				case 100:
-					return instr1;
-				case 101:
-					return instr2;
-				case 102:
-					return instr3;
-			}
-			return 0;
+		short read(int adres){
+			return ram[adres];
 		}
 
-		void write(int adres,int data){
-			switch(adres){
-				case 7:
-					data_wr=data;
-					break;
-				case 14:
-					data_wr=data;
-					break;
-				case 1:
-					data_wr=data;
-					break;
+		void write(int adres, int data){
+			ram[adres]=data;
 		}
-	}
+
+};
+
+class REG{
+	
+	short reg[10];
+	public:
+
+		short read(int adres){
+			return reg[adres];
+		}
+
+		void write(int adres, int data){
+			reg[adres]=data;
+		}
 };
 
 class ALU{
 	public:
 		int perform(int op, int dat1, int dat2){ 
 			switch(op){
-				case 0:
-					return dat1*dat2;
+				case 3:
+					return dat1+dat2;
 				case 1:
 					return dat1-dat2;
 				case 2:
-					return dat1+dat2;
+					return dat1*dat2;
 			}
 			return 0;
 		}
 };
 	
 class CU{
-	int inst;
-	int op;
-	int r_wr;
-	int r2;
-	int r3;
-	int cir=100;     //current instruction adres register
-	int rdat1;
-	int rdat2;
-	int rdat_wr;
+	int cir=0;     //current instruction adres register		????
+
+	RAM ram;
+	REG reg;
+	ALU alu;
+
 	public:
+		
 		void fetch(){
-			RAM ram;
-			inst=ram.read(cir);	
+			reg.write(0, ram.read(cir));	//reg(0)  instruction register
 			cir++;
+			decod(reg.read(0));
 		}
 	
-		void decod(){
+		void decod(int inst){
 	
-			r3=inst&0b1111;
-			r2=inst>>4&0b1111;
-			r_wr=inst>>8&0b1111;
-			op=inst>>12&0b1111;
+			reg.write(4, inst&0b1111);      //reg(4)  data2 adress register
+			reg.write(3, inst>>4&0b1111);   //reg(3)  data1 adress register
+			reg.write(2, inst>>8&0b1111);   //reg(2)  sum data adress register
+			reg.write(1, inst>>12&0b1111);  //reg(1)  opcode register
+			execute(reg.read(1));
+				print();
 		}
 
-		void execute(){
-			ALU alu;
-			RAM ram;
-			rdat1=ram.read(r2);
-			rdat2=ram.read(r3);
-			rdat_wr=alu.perform(op,rdat1,rdat2);
-			ram.write(r_wr,rdat_wr);
+		void execute(int op){
+				std::cout<<op<<std::endl;
 
-
-			std::cout<<"data_wr - "<<ram.read(55)<<std::endl;
-			//std::cout<<"rdat_wr - "<<rdat_wr<<std::endl;
+			switch(op){
+				case 1:
+						ram.write(reg.read(2), 777);
+						break;
+				case 2:
+						ram.write(reg.read(2), 888);
+						break;
+				case 3:
+						reg.write(6,(ram.read(reg.read(3))));
+						reg.write(7,(ram.read(reg.read(4))));
+						reg.write(8, alu.perform(reg.read(1),reg.read(3),reg.read(4)));
+						ram.write(reg.read(2), reg.read(8));
+						break;
+			}
 		}
 
 
+		void load_ram(short inst[]){
+			for (int i=0;i<5;i++){
+				ram.write(i,inst[i]);
+			}
+		}
 
 		void print(){	
-			std::cout <<"inst - "<< inst<< std::endl;
-			std::cout << "op - "<< op<< std::endl;
-			std::cout << "r_wr - "<< r_wr<< std::endl;
-			std::cout << "r2 - "<< r2<< std::endl;
-			std::cout << "r3 - "<< r3<< std::endl;
-			
-	//		std::cout << std::bitset<sizeof(inst) * 4>(inst) << std::endl;
-	//		std::cout << std::bitset<sizeof(op) * 4>(op) << std::endl;
-	//		std::cout << std::bitset<sizeof(r_wr) * 4>(r_wr) << std::endl;
-	//		std::cout << std::bitset<sizeof(r2) * 4>(r2) << std::endl;
-	//		std::cout << std::bitset<sizeof(r3) * 4>(r3) << std::endl;
+			for (int i=0;i<20;i++){
+					std::cout<<"ram "<<ram.read(i)<<std::endl;
+			}
+			for (int i=0;i<10;i++){
+					std::cout<<"reg "<<reg.read(i)<<std::endl;
+			}
 		}
 };
 
 
 class CPU{
-	CU cu;
+		CU cu;
 	public:	
-		void load(){
-			cu.fetch();
-			cu.decod();
-			cu.execute();
-			cu.print();
+		void load(short inst[]){
+				cu.load_ram(inst);
+		}
+		void exe(){
+				cu.fetch();
 		}
 };
 
 
 
 int main(){
-	
+		short all_data[10]={6912, 11264, 15036,};
 		CPU cpu;
-		CU cu;
+		cpu.load(all_data);
 		for(int i=0;i<3;i++){
-		cpu.load();
+		cpu.exe();
 		}
+
 }
