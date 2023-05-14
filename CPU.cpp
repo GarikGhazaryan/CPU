@@ -1,7 +1,7 @@
 #include <iostream>
 #include <bitset>
 
-class SSD{
+class SSD{  // ?????????????????????????????
 
 	short ssd[20]={};
 	
@@ -41,6 +41,11 @@ class REG{
 	
 	short reg[10];
 	public:
+		REG(){
+			for(int i=0;i<10;i++){
+				reg[i]=0;
+			}
+		}
 
 		short read(int adres){
 			return reg[adres];
@@ -67,18 +72,18 @@ class ALU{
 };
 	
 class CU{
-	int cir=0;     //current instruction adres register		????
+	int pc=0;     //current instruction adres register		????
 
 	RAM ram;
 	REG reg;
 	ALU alu;
-	SSD ssd;
+	SSD ssd;       // ??????????????
 
 	public:
 		
 		void fetch(){
-			reg.write(0, ram.read(cir));	//reg(0)  instruction register
-			cir++;
+			reg.write(0, ram.read(pc));	//reg(0)  instruction register
+			pc++;
 			decod(reg.read(0));
 		}
 	
@@ -92,7 +97,7 @@ class CU{
 				print();
 		}
 
-		void execute(int op){
+		void execute(short op){
 				std::cout<<op<<std::endl;
 
 			switch(op){
@@ -113,8 +118,8 @@ class CU{
 		}
 
 
-		void load_ram(short inst[]){
-			for (int i=0;i<5;i++){
+		void load_ram(short inst[], short size){
+			for (int i=0;i<size;i++){
 				ram.write(i,inst[i]);
 			}
 		}
@@ -137,8 +142,8 @@ class CU{
 class CPU{
 		CU cu;
 	public:	
-		void load(short inst[]){
-				cu.load_ram(inst);
+		void load(short inst[], short size){
+				cu.load_ram(inst, size);
 		}
 		void exe(){
 				cu.fetch();
@@ -150,9 +155,10 @@ class CPU{
 int main(){
 		
 		short all_data[]={6912, 11264, 15036,19900,24252};
+		short size=(sizeof (all_data))/(sizeof(short));
 		CPU cpu;
-		cpu.load(all_data);
-		for(int i=0;i<5;i++){
+		cpu.load(all_data, size);
+		for(int i=0;i<size;i++){
 		cpu.exe();
 		}
 
