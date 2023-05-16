@@ -1,32 +1,22 @@
 #include <iostream>
 #include <bitset>
 
-class SSD{  // ?????????????????????????????
-
-	short ssd[20]={};
-	
-	public:
-
-		short read(int adres){
-			return ssd[adres];
-		}
-
-		void write(int adres, int data){
-			ssd[adres]=data;
-		}
-
-};
-
 class RAM{
-
-	short ram[20];
-	
+	short N;
+	short* ram= new short[N];
 	public:
-		RAM(){
-			for(int i=0;i<20;i++){
+		
+		RAM(){                       //???????????????????????
+			for(int i=0;i<N;i++){
 				ram[i]=0;
+			std::cout<<i<<std::endl;
 			}
 		}
+
+		void setn(short n){
+			N=n;
+		}
+
 		short read(int adres){
 			return ram[adres];
 		}
@@ -35,14 +25,19 @@ class RAM{
 			ram[adres]=data;
 		}
 
+		~RAM(){
+			delete [] ram;
+			std::cout<<"destr"<<std::endl;
+		}
+
 };
 
 class REG{
 	
-	short reg[10];
+	short reg[15];
 	public:
 		REG(){
-			for(int i=0;i<10;i++){
+			for(int i=0;i<15;i++){
 				reg[i]=0;
 			}
 		}
@@ -72,18 +67,15 @@ class ALU{
 };
 	
 class CU{
-	int pc=0;     //current instruction adres register		????
-
 	RAM ram;
 	REG reg;
 	ALU alu;
-	SSD ssd;       // ??????????????
 
 	public:
 		
 		void fetch(){
-			reg.write(0, ram.read(pc));	//reg(0)  instruction register
-			pc++;
+			reg.write(0, ram.read(reg.read(5)));	//reg(0)  instruction register
+			reg.write(5, (reg.read(5))+1);			//increment a (pc)
 			decod(reg.read(0));
 		}
 	
@@ -113,12 +105,13 @@ class CU{
 						reg.write(8, alu.perform(reg.read(1),reg.read(6),reg.read(7)));
 						ram.write(reg.read(2), reg.read(8));
 						break;
-
 			}
 		}
 
 
 		void load_ram(short inst[], short size){
+				ram.setn(size*4);
+				reg.write(5,0);        //reg(5)-set first instruction adress 0, (pc) current instruction adres register	
 			for (int i=0;i<size;i++){
 				ram.write(i,inst[i]);
 			}
@@ -131,26 +124,32 @@ class CU{
 			}
 			std::cout<<std::endl;
 			std::cout<<"reg ";
-			for (int i=0;i<10;i++){
+			for (int i=0;i<15;i++){
 					std::cout<<reg.read(i)<<" ";
 			}
 			std::cout<<std::endl;
 		}
 };
 
-
 class CPU{
+		short n;
 		CU cu;
 	public:	
 		void load(short inst[], short size){
 				cu.load_ram(inst, size);
+				n=size;
 		}
-		void exe(){
+	private:
+		void exe(short n){
+			for(int i =0;i<n;i++){
 				cu.fetch();
+			}
+		}
+	public:
+		void exe(){
+			exe(n);
 		}
 };
-
-
 
 int main(){
 		
@@ -158,8 +157,6 @@ int main(){
 		short size=(sizeof (all_data))/(sizeof(short));
 		CPU cpu;
 		cpu.load(all_data, size);
-		for(int i=0;i<size;i++){
 		cpu.exe();
-		}
-
+		
 }
