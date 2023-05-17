@@ -12,9 +12,18 @@ First we have an array of instructions, when Load() is called,
 
 Instructions
 
-1. 6912  (0001101100000000)  //This instruction is designed to add a date to ram at the address allocated for the date.  
-2. 11264 (0010110000000000)  //This instruction is designed to add a date to ram at the address allocated for the date.
-3. 15036 (0011101010111100)  // (+)  This instruction is for arithmetic on the dates added by the first two instructions.
-4. 19900 (0100110110111100)  // (-)  This instruction is for arithmetic on the dates added by the first two instructions.
-5. 24252 (0101111010111100)  // (~)  This instruction is for arithmetic on the dates added by the first two instructions.
+1.Stor 6912   //This instruction is designed to add a date to ram at the address allocated for the date.  
+2.Stor 11264   //This instruction is designed to add a date to ram at the address allocated for the date.
+3.Add  15036   // (+)  This instruction is for arithmetic on the dates added by the first two instructions.
+4. 19900   // (-)  This instruction is for arithmetic on the dates added by the first two instructions.
+5.Complement 24252   // (~)  This instruction is for arithmetic on the dates added by the first two instructions.
 
+
+
+
+
+
+
+To compile the program, you need to call (make),
+To test the program, you need to call (make test),
+To clean the folder from files created by compilation, you need to call (make clean),
