@@ -2,7 +2,7 @@ module counter (
 	input [3:0] load,
 	input clk,
 	input rst,
-	output reg out=1'b0
+	output reg out/*=1'b0*/
 );
 
 	reg [3:0] count;
@@ -14,11 +14,11 @@ module counter (
 
 		if ((count == load) && ~rst) begin
 			count<=1'b0;
-			out <= 1'b1;
+			//out <= 1'b1;
 		end
 	end
-	always @(negedge clk)begin
-			if(count==0)
-				out <= 1'b0;
+	always @(*)begin
+			if(count==0) out <= 1'b0;
+			else out<=1'b1;
 	end
 endmodule
