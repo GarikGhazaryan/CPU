@@ -21,19 +21,19 @@ module tb();
 	always @(*) begin
 		#150;
 		$display("time=%0t out=%b", $time, out);
-		load = 4'b0010;
+		load = 4'b0011;
 		rst = 1'b0;
 		#250;
 		$display("time=%0t out=%b", $time, out);
-		load = 4'b0010;
+		load = 4'b0011;
 		rst = 1'b1;
 		#350;
 		$display("time=%0t out=%b", $time, out);
-		load = 4'b0100;
+		load = 4'b0011;
 		rst = 1'b0;
 		#450;
 		$display("time=%0t out=%b", $time, out);
-		rst = 1'b1;
+	//	rst = 1'b1;
 		#600;
 		$finish;
 	end

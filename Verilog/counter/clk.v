@@ -6,20 +6,21 @@ module counter (
 );
 
 	reg [3:0] count;
-	always @(posedge clk) begin
-		if (rst)
+	always @(posedge clk) 
+	begin
+		if (rst)begin
 			count <= 4'b0000;
-		else
-			count <= count + 1;
-
-		if ((count == load) && ~rst) begin
-			count<=1'b0;
-			out <= 1'b1;
+			out <= 1'b0;
 		end
-			//out <= 1'b0;
-	end
-	always @(*)begin
-			if(count==0) out <= 1'b0;
-			else out<=1'b1;
+		else if(count==load)
+		begin
+			out <= 1'b1;
+			count<=1'b0;
+			end
+		else
+		begin
+			count <= count + 1;
+			out <= 1'b0;
+		end
 	end
 endmodule
