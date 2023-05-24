@@ -14,8 +14,9 @@ module counter (
 
 		if ((count == load) && ~rst) begin
 			count<=1'b0;
-			//out <= 1'b1;
+			out <= 1'b1;
 		end
+			//out <= 1'b0;
 	end
 	always @(*)begin
 			if(count==0) out <= 1'b0;
