@@ -22,9 +22,9 @@ module add_Nbit #(parameter N=4) (a, b, out, c_out);
 	input[N-1:0] a;
 	input[N-1:0] b;
 	output[N:0] out;
-	output [N-1:0] temp_out;
 	output c_out;
 	
+	wire [N-1:0] temp_out;
 	wire [N:0] c_out_i;
 	
 	assign c_out_i[0]=1'b0;
