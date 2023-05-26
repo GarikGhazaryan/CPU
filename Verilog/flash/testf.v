@@ -7,7 +7,7 @@ module tb();
 
 	flash f (sw, ld, clk, rst);
 	initial begin
-		$dumpfile("counter.vcd");
+		$dumpfile("flash.vcd");
 		$dumpvars();
 	end
 	initial begin
