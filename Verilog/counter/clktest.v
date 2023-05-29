@@ -15,8 +15,8 @@ module tb();
 		rst = 1'b1;
 
 	end
-
 	always #15 clk = ~clk;
+
 
 	always @(*) begin
 		#150;

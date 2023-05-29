@@ -17,24 +17,24 @@ module tb();
 
 	end
 
-	always #40 clk = ~clk;
+	always #80 clk = ~clk;
 
 	always @(*) begin
 		#10;
 		rst = 1'b0;
 		$display("time=%0t out=%b", $time, ld);
-		#103;
+		#100000003;
 		sw=1'b1;
-		#901;
+		#10000000;
 		sw=1'b0;
-		#1607;
+		#100000007;
 		sw=1'b1;
-		#503;
+		#10000000;
 		sw=1'b0;
 		#203;
 		$display("time=%0t out=%b", $time, ld);
 		rst = 1'b0;
-		#207;
+		#20000007;
 		rst = 1'b1;
 		#309;
 		$finish;
