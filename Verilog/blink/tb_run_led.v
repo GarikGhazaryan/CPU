@@ -16,14 +16,14 @@ end
 
 always #0.000004 clk = ~clk;
 
-run_led rl (clk, rst, pulse_out, led1, led2, led3, led4);
+run_led rl (clk, rst, led1, led2, led3, led4);
 
 initial begin
         rst=1'b1;
         #(2);
 
         rst=1'b0;
-        #30;
+        #40;
         $finish;
 end     
 endmodule
