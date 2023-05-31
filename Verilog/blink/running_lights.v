@@ -25,34 +25,33 @@ timer #(.WIDTH(32)) cnt
 
 always@(*)
 begin
-		if(rst) state=2'b00;
-		else begin
 		case (state)
 		state_1:
-				begin	if(pulse_out) state_next=2'b01;
-					 else state_next=2'b00;
+				begin	if(pulse_out) state_next=state_2;
+					 else state_next=state_1;
 			 end
 
 		state_2:
-				begin	if(pulse_out) state_next=2'b10;
-					 else state_next=2'b01;
+				begin	if(pulse_out) state_next=state_3;
+					 else state_next=state_2;
 			 end
 		state_3: 
-				begin	if(pulse_out) state_next=2'b11;
-					 else state_next=2'b10;
+				begin	if(pulse_out) state_next=state_4;
+					 else state_next=state_3;
 			 end
 
 		state_4: 
-				begin if(pulse_out) state_next=2'b00;
-					 else state_next=2'b11;
+				begin if(pulse_out) state_next=state_1;
+					 else state_next=state_4;
 			 end
+			 default state_next=2'b0;
 	 			endcase
-		end
 end
 
 always@(posedge clk)
-begin
-		state <= state_next;
+begin    
+		if(rst) state=2'b00;
+		else state <= state_next;
 end
 
 always@(posedge clk )begin
@@ -63,9 +62,9 @@ always@(posedge clk )begin
 			   	led4<=1'b0;
 		end
 		else if(pulse_out) begin
-				case (state)
+			case (state)
 
-				state_1: led1<=~led1;
+			state_1: led1<=~led1;
              
         		state_2: led2<=~led2;
         	 

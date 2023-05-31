@@ -11,7 +11,7 @@ timer #(
 ) cnt_i (
     .clk(clk),
     .rst(rst),
-    .limit(250_0),
+    .limit(500_000),
     .pulse_out(pulse_out)
 );
 
