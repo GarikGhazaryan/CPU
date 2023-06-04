@@ -32,7 +32,7 @@ end
 
 always@(posedge clk)begin
 			ch_up<=24'd1+count_chng;
-			ch_down<=24'd3000000-count_chng; //change full size
+			ch_down<=24'd30000-count_chng; //change full size
 	end
 
 always@(posedge clk)begin
