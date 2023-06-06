@@ -12,8 +12,8 @@ reg [23:0] ch_down;
 always@(posedge clk)begin
 
 		if(rst)begin
-			   	count_t1 = 24'b0;
-			   	count_t2 = 24'b0;
+			   	count_t1 <= 24'b0;
+			   	count_t2 <= 24'b0;
 				out<=1'b0;
 		end
 		else begin

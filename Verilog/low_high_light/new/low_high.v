@@ -16,8 +16,8 @@ Counter_low #(.M(speed_down), .N(length)) low (.clk(clk), .rst(rst), .count(low_
 always@(*)begin
 		if(rst) led=1'b0;
 		else begin
-				if(high_out<low_out) led<=1'b1;
-				else led<=1'b0;
+			if(high_out<low_out) led=1'b1;
+			else led=1'b0;
 		end
 end	
 endmodule

@@ -23,7 +23,7 @@ end
 always @(*) begin
 		if(count==N) level<=1'b0;
 		else if (count==32'b0) level<=1'b1;
-		else count<=count;
+		else level<=level;
 end
 endmodule
 
