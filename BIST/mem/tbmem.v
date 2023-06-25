@@ -9,7 +9,7 @@ reg read_en;
 wire [7:0] data;
 reg [3:0] adress;
 
-Ram t (.clk(clk), .adress(adress), .data(data), .wr_en(wr_en), .read_en(read_en));
+mem t (.clk(clk), .adress(adress), .data(data), .wr_en(wr_en), .read_en(read_en));
 
 always #10 clk = ~clk;
 

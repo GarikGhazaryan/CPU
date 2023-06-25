@@ -6,7 +6,7 @@ reg clk, rst, pr_rst, enable, up_down;
 wire [Adr_size-1:0] adress;
 wire c_out;
 
-Gen gen (.clk(clk), .rst_adr(rst), .pr_res_adr(pr_rst), .enable(enable), .up_down(up_down), .adress(adress), .c_out(c_out)); 
+adr_gen gen (.clk(clk), .rst_adr(rst), .pr_res_adr(pr_rst), .enable(enable), .up_down(up_down), .adress(adress), .c_out(c_out)); 
 
 always #1 clk = ~clk;
 initial begin

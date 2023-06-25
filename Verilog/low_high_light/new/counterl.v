@@ -20,10 +20,10 @@ always @(posedge clk) begin
         end
 end
 
-always @(*) begin
+always @(posedge clk) begin
 		if(count==N) level<=1'b0;
 		else if (count==32'b0) level<=1'b1;
-		else level<=level;
+		//else level<=level;
 end
 endmodule
 
