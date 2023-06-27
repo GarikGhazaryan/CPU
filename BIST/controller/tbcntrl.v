@@ -32,37 +32,37 @@ initial begin
 	rst=1'b0;
 	start=1'b1;
 	c_out=1'b0;
-	#1;
+	#10;
 	start=1'b0;
 	#210;
 	rst=1'b0;
 	start=1'b0;
 	c_out=1'b1;
-	#1
+	#2
 	c_out=1'b0;
 	#210;
 	rst=1'b0;
 	start=1'b0;
 	c_out=1'b1;
-	#1
+	#2
 	c_out=1'b0;
 	#210;
 	rst=1'b0;
 	start=1'b0;
 	c_out=1'b1;
-	#1
+	#2
 	c_out=1'b0;
 	#210;
 	rst=1'b0;
 	start=1'b0;
 	c_out=1'b1;
-	#1
+	#2
 	c_out=1'b0;
 	#210;
 	rst=1'b0;
 	start=1'b0;
 	c_out=1'b1;
-	#1
+	#2
 	c_out=1'b0;
 	#20;
 	$finish;
