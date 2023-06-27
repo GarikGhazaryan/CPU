@@ -1,7 +1,7 @@
-module comparator (data_et, data_read, read_en, error);
+module comparator (clk, rst, data_et, data_read, read_en, error);
 
 parameter Dta_size=8;
-input read_en;
+input clk, rst, read_en;
 input [Dta_size-1:0] data_et, data_read;
 output error;
 

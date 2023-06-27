@@ -6,7 +6,7 @@ wire status, done;
 
 
 
-control bist (clk, rst, start, status, done);
+Bist bist (clk, rst, start, status, done);
 
 
 always #1 clk = ~clk;
@@ -17,21 +17,18 @@ initial begin
     end
 
 initial begin
-	rst=1'b0;
-	start=1'b0;
-	#200;
 	rst=1'b1;
 	start=1'b0;
 	#20;
 	rst=1'b0;
 	start=1'b0;
-	#200;
+	#20;
 	rst=1'b0;
 	start=1'b1;
-	#21;
+	#2;
 	rst=1'b0;
 	start=1'b0;
-	#2000;
+	#208;
 	$finish;
 
 end
