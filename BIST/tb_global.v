@@ -12,7 +12,7 @@ Bist bist (clk, rst, start, status, done);
 always #1 clk = ~clk;
 initial begin
     clk=1'b0;
-    $dumpfile("mem.vcd");
+    $dumpfile("gtk.vcd");
     $dumpvars();
     end
 
@@ -25,7 +25,7 @@ initial begin
 	#20;
 	rst=1'b0;
 	start=1'b1;
-	#2;
+	#5;
 	rst=1'b0;
 	start=1'b0;
 	#208;

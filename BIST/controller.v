@@ -1,4 +1,4 @@
-module control (clk, rst, start, c_out, error, status, done, wr_en, read_en, rst_adr, pr_res_adr, enable, up_down, data_bit );
+module control (clk, rst, start, c_out, error, statu, done, wr_en, read_en, rst_adr, pr_res_adr, enable, up_down, data_bit );
 
 input clk, rst, start, c_out, error;
 output reg status, done, wr_en, read_en, rst_adr, pr_res_adr, enable, up_down, data_bit;
@@ -127,7 +127,7 @@ always@(*) begin
 					pr_res_adr=1'b1;
 					read_en=1'b1;
 					wr_en= 1'b0;
-					up_down = 1'b1;
+					up_down = 1'b0;
 					data_bit=1'b0;
 				end 
 				else begin
