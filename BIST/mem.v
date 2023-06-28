@@ -1,22 +1,17 @@
-module mem (clk, adress, data, wr_en, read_en);
-parameter Dta_size=8;
-parameter Adr_size=4;
+module mem #(parameter ADR_SIZE = 4, parameter DATA_SIZE = 8) (clk, adress, data, wr_en, read_en);
 
-localparam depth = (1<<Adr_size)-1;
+localparam DEPTH = (1 << ADR_SIZE) - 1;
 
 input clk, wr_en, read_en;
-input [Adr_size-1 : 0] adress;
+input [ADR_SIZE - 1 : 0] adress;
+inout [DATA_SIZE - 1 : 0] data;
 
-inout [Dta_size-1 : 0] data ;
+reg [(DATA_SIZE - 1) : 0] ram[0 : DEPTH];
 
-reg [(Dta_size-1) : 0] ram[0 : depth];
-
-assign data= read_en & !wr_en ? ram[adress] : {Dta_size{1'bz}};
+assign data = read_en & !wr_en ? ram[adress] : {DATA_SIZE{1'bz}};
 
 always@(posedge clk)begin
-
-	if(wr_en)begin
-	       	ram[adress]<=data; 
-	end
+	if(wr_en)
+		ram[adress] <= data; 
 end
 endmodule
