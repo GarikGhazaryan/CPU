@@ -1,6 +1,6 @@
 module Bist #(parameter ADR_SIZE = 4, parameter DATA_SIZE = 8) (clk, rst, start, status, done);
 
-input clk, rst, start, c_out;
+input clk, rst, start;
 output status, done;
 
 wire [ADR_SIZE-1 : 0] adress;
@@ -8,7 +8,7 @@ wire [DATA_SIZE-1 : 0] data;
 wire [DATA_SIZE-1 : 0] data_et;
 wire [DATA_SIZE-1 : 0] data_read;
 
-wire enable, rst_adr, pr_res_adr, read_en, wr_en, up_down, data_bit, error;
+wire enable, c_out, rst_adr, pr_res_adr, read_en, wr_en, up_down, data_bit, error;
 
 control ctrl (clk, rst, start, c_out, error, status, done, wr_en, read_en, rst_adr, pr_res_adr, enable, up_down, data_bit );
 

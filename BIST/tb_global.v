@@ -26,9 +26,9 @@ initial begin
 	rst=1'b0;
 	start=1'b0;
 	#10;
-	force bist.mm.data = {DATA_SIZE{1'b1}};
+	//force bist.datg.data = {DATA_SIZE{1'b1}};
 	#4;
-	release bist.mm.data;
+	//release bist.datg.data;
 	#2080;
 	$finish;
 end
