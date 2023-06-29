@@ -6,7 +6,6 @@ output status, done;
 wire [ADR_SIZE-1 : 0] adress;
 wire [DATA_SIZE-1 : 0] data;
 wire [DATA_SIZE-1 : 0] data_et;
-wire [DATA_SIZE-1 : 0] data_read;
 
 wire enable, c_out, rst_adr, pr_res_adr, read_en, wr_en, up_down, data_bit, error;
 
