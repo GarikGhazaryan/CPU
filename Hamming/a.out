@@ -1,0 +1,85 @@
+#! /usr/bin/vvp
+:ivl_version "11.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x557aaccc0720 .scope module, "tb" "tb" 2 1;
+ .timescale 0 0;
+v0x557aaccd78e0_0 .net "data_h_out", 6 0, L_0x557aaccd8780;  1 drivers
+v0x557aaccd79a0_0 .var "data_in", 3 0;
+S_0x557aaccc08b0 .scope module, "en" "encoder" 2 7, 3 1 0, S_0x557aaccc0720;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "data_in";
+    .port_info 1 /OUTPUT 7 "data_h_out";
+L_0x557aaccd7b80 .functor XOR 1, L_0x557aaccd7a40, L_0x557aaccd7ae0, C4<0>, C4<0>;
+L_0x557aaccd7d60 .functor XOR 1, L_0x557aaccd7b80, L_0x557aaccd7cc0, C4<0>, C4<0>;
+L_0x557aaccd7f90 .functor XOR 1, L_0x557aaccd7e20, L_0x557aaccd7ef0, C4<0>, C4<0>;
+L_0x557aaccd81b0 .functor XOR 1, L_0x557aaccd7f90, L_0x557aaccd80d0, C4<0>, C4<0>;
+L_0x557aaccd8480 .functor XOR 1, L_0x557aaccd82f0, L_0x557aaccd8390, C4<0>, C4<0>;
+L_0x557aaccd8630 .functor XOR 1, L_0x557aaccd8480, L_0x557aaccd8590, C4<0>, C4<0>;
+v0x557aacc860f0_0 .net *"_ivl_1", 0 0, L_0x557aaccd7a40;  1 drivers
+v0x557aaccd6ab0_0 .net *"_ivl_11", 0 0, L_0x557aaccd7e20;  1 drivers
+v0x557aaccd6b90_0 .net *"_ivl_13", 0 0, L_0x557aaccd7ef0;  1 drivers
+v0x557aaccd6c50_0 .net *"_ivl_14", 0 0, L_0x557aaccd7f90;  1 drivers
+v0x557aaccd6d30_0 .net *"_ivl_17", 0 0, L_0x557aaccd80d0;  1 drivers
+v0x557aaccd6e60_0 .net *"_ivl_21", 0 0, L_0x557aaccd82f0;  1 drivers
+v0x557aaccd6f40_0 .net *"_ivl_23", 0 0, L_0x557aaccd8390;  1 drivers
+v0x557aaccd7020_0 .net *"_ivl_24", 0 0, L_0x557aaccd8480;  1 drivers
+v0x557aaccd7100_0 .net *"_ivl_27", 0 0, L_0x557aaccd8590;  1 drivers
+v0x557aaccd71e0_0 .net *"_ivl_3", 0 0, L_0x557aaccd7ae0;  1 drivers
+v0x557aaccd72c0_0 .net *"_ivl_4", 0 0, L_0x557aaccd7b80;  1 drivers
+v0x557aaccd73a0_0 .net *"_ivl_7", 0 0, L_0x557aaccd7cc0;  1 drivers
+v0x557aaccd7480_0 .net "data_h_out", 6 0, L_0x557aaccd8780;  alias, 1 drivers
+v0x557aaccd7560_0 .net "data_in", 3 0, v0x557aaccd79a0_0;  1 drivers
+v0x557aaccd7640_0 .net "p1", 0 0, L_0x557aaccd7d60;  1 drivers
+v0x557aaccd7700_0 .net "p2", 0 0, L_0x557aaccd81b0;  1 drivers
+v0x557aaccd77c0_0 .net "p3", 0 0, L_0x557aaccd8630;  1 drivers
+L_0x557aaccd7a40 .part v0x557aaccd79a0_0, 0, 1;
+L_0x557aaccd7ae0 .part v0x557aaccd79a0_0, 1, 1;
+L_0x557aaccd7cc0 .part v0x557aaccd79a0_0, 3, 1;
+L_0x557aaccd7e20 .part v0x557aaccd79a0_0, 0, 1;
+L_0x557aaccd7ef0 .part v0x557aaccd79a0_0, 2, 1;
+L_0x557aaccd80d0 .part v0x557aaccd79a0_0, 3, 1;
+L_0x557aaccd82f0 .part v0x557aaccd79a0_0, 1, 1;
+L_0x557aaccd8390 .part v0x557aaccd79a0_0, 2, 1;
+L_0x557aaccd8590 .part v0x557aaccd79a0_0, 3, 1;
+L_0x557aaccd8780 .concat [ 1 1 1 4], L_0x557aaccd8630, L_0x557aaccd81b0, L_0x557aaccd7d60, v0x557aaccd79a0_0;
+    .scope S_0x557aaccc0720;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "gtk.vcd" {0 0 0};
+    %vpi_call 2 12 "$dumpvars" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x557aaccc0720;
+T_1 ;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x557aaccd79a0_0, 0, 4;
+    %delay 28, 0;
+    %vpi_call 2 18 "$display", "in=%b", v0x557aaccd79a0_0 {0 0 0};
+    %vpi_call 2 19 "$display", "out=%b", v0x557aaccd78e0_0 {0 0 0};
+    %delay 208, 0;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v0x557aaccd79a0_0, 0, 4;
+    %delay 208, 0;
+    %vpi_call 2 23 "$display", "in=%b", v0x557aaccd79a0_0 {0 0 0};
+    %vpi_call 2 24 "$display", "out=%b", v0x557aaccd78e0_0 {0 0 0};
+    %delay 208, 0;
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x557aaccd79a0_0, 0, 4;
+    %delay 208, 0;
+    %vpi_call 2 28 "$display", "in=%b", v0x557aaccd79a0_0 {0 0 0};
+    %vpi_call 2 29 "$display", "out=%b", v0x557aaccd78e0_0 {0 0 0};
+    %delay 208, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_encod.v";
+    "hamming.v";
