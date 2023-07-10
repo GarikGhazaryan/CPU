@@ -11,12 +11,12 @@ initial begin
 end
 
 initial begin
-        data_h_in=7'b1101100;
+        data_h_in=7'b1111111;
         #28;
         $display("in=%b", data_h_in);
         $display("true=%b", data_out);
         #208;
-        data_h_in=7'b0101100;
+        data_h_in=7'b1000111;
         #28;
         $display("in=%b", data_h_in);
         $display("true=%b", data_out);

@@ -17,7 +17,7 @@ always@(s) begin
 
 		010: data_out={data_h_in[6], 1'b1, data_h_in[4:0]};
 
-		001: data_out={data_h_in[6:5], 1'b1, data_h_in[3:0]};
+//		001: data_out={data_h_in[6:5], 1'b1, data_h_in[3:0]};
 
 		110: data_out={data_h_in[6:4], 1'b1, data_h_in[2:0]};
 

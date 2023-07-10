@@ -11,12 +11,32 @@ initial begin
 end
 
 initial begin
-	in_dat=4'b0101;
+	in_dat=4'b1000;
+	#28;
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
+	#208;
+	in_dat=4'b0100;
 	#28;
 	$display("in=%b", in_dat);
 	$display("true=%b", true_dat);
 	#208;
 	in_dat=4'b1101;
+	#28;
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
+	#208;
+	in_dat=4'b0010;
+	#28;
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
+	#208;
+	in_dat=4'b1010;
+	#28;
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
+	#208;
+	in_dat=4'b1110;
 	#208;
 	$display("in=%b", in_dat);
 	$display("true=%b", true_dat);

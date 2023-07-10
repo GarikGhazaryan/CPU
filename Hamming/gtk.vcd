@@ -1,5 +1,5 @@
 $date
-	Mon Jul 10 11:33:15 2023
+	Mon Jul 10 16:10:17 2023
 $end
 $version
 	Icarus Verilog
@@ -19,16 +19,16 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx %
-b111 $
-b1101100 #
-b1101100 "
-bx !
+b1111111 %
+b0 $
+b1111111 #
+b1111111 "
+b1111111 !
 $end
 #236
-b111100 !
-b111100 %
+b1000111 !
+b1000111 %
 b1 $
-b101100 "
-b101100 #
+b1000111 "
+b1000111 #
 #472
