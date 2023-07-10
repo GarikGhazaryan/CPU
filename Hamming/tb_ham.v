@@ -41,7 +41,7 @@ initial begin
 	$display("in=%b", in_dat);
 	$display("true=%b", true_dat);
 	#208;
-	in_dat=4'b1111;
+	in_dat=4'b0001;
 	#208;
 	$display("in=%b", in_dat);
 	$display("true=%b", true_dat);
