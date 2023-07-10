@@ -1,10 +1,9 @@
 module tb();
 
-reg [3:0] data_in;
-wire [6:0] data_h_out;
+reg [3:0] in_dat;
+wire [6:0] true_dat; 
 
-encod en(data_in, data_h_out);
-
+Ham H (in_dat, true_dat);
 
 initial begin
 	$dumpfile("gtk.vcd");
@@ -12,20 +11,20 @@ initial begin
 end
 
 initial begin
-	data_in=4'b0101;
+	in_dat=4'b0101;
 	#28;
-	$display("in=%b", data_in);
-	$display("out=%b", data_h_out);
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
 	#208;
-	data_in=4'b1101;
+	in_dat=4'b1101;
 	#208;
-	$display("in=%b", data_in);
-	$display("out=%b", data_h_out);
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
 	#208;
-	data_in=4'b1111;
+	in_dat=4'b1111;
 	#208;
-	$display("in=%b", data_in);
-	$display("out=%b", data_h_out);
+	$display("in=%b", in_dat);
+	$display("true=%b", true_dat);
 	#208;
 	$finish;
 end
