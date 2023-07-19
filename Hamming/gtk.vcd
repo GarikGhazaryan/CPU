@@ -1,0 +1,43 @@
+$date
+	Wed Jul 19 14:32:48 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_en $end
+$var wire 15 ! data_h_out [14:0] $end
+$var reg 11 " data_in [10:0] $end
+$scope module en $end
+$var wire 11 # data_in [10:0] $end
+$var wire 1 $ p1 $end
+$var wire 1 % p2 $end
+$var wire 1 & p4 $end
+$var wire 1 ' p8 $end
+$var wire 15 ( data_h_out [14:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b111011110000111 (
+1'
+0&
+1%
+1$
+b11110000111 #
+b11110000111 "
+b111011110000111 !
+$end
+#236
+1$
+1%
+1&
+1'
+b110100010000001 !
+b110100010000001 (
+b1 "
+b1 #
+#472
