@@ -11,16 +11,26 @@ initial begin
 end
 
 initial begin
-        data_h_in=15'b101101001010101;
+        data_h_in=15'b101101001110101;
         #28;
         $display("in=%b", data_h_in);
         $display("true=%b", data_out);
         #28;
-        data_h_in=15'b101101001010111;
+        data_h_in=15'b101101001010001;
         #28;
         $display("in=%b", data_h_in);
         $display("true=%b", data_out);
-        #208;
+        #28;
+        data_h_in=15'b000000000001110;
+        #28;
+        $display("in=%b", data_h_in);
+        $display("true=%b", data_out);
+        #20;
+        data_h_in=15'b000000000001101;
+        #28;
+        $display("in=%b", data_h_in);
+        $display("true=%b", data_out);
+        #20;
         $finish;
 end
 endmodule

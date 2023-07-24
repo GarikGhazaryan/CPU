@@ -1,46 +1,32 @@
 module tb();
 
-reg [3:0] in_dat;
-wire [6:0] true_dat; 
+reg clk, rst, en;
 
-Ham H (in_dat, true_dat);
+wire [10:0] true_dat;
+
+Ham H (clk, rst, en, true_dat);
 
 initial begin
-	$dumpfile("gtk.vcd");
-	$dumpvars();
+        clk=1'b0;
+        $dumpfile("gtk.vcd");
+        $dumpvars();
 end
 
+always #1 clk=~clk;
+
 initial begin
-	in_dat=11'b11110001111;
-	#28;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#20;
-	in_dat=11'b0000001111 ;
-	#28;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#20;
-	in_dat=11'b11111100000;
-	#28;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#20;
-	in_dat=11'b10101000001;
-	#28;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#20;
-	in_dat=11'b10101010101;
-	#28;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#20;
-	in_dat=11'b10111110101;
-	#20;
-	$display("in=%b", in_dat);
-	$display("true=%b", true_dat);
-	#208;
-	$finish;
+        rst=1'b0;
+        #9;
+        rst=1'b1;
+        #3;
+        rst=1'b0;
+        #3;
+        en=1'b1;
+        #3;
+        en=1'b0;
+        #1000;
+        $finish;
+
 end
 endmodule
+
