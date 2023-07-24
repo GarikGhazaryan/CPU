@@ -1,7 +1,7 @@
 module dec_tb();
 
-reg [6:0] data_h_in;
-wire [6:0] data_out;
+reg [14:0] data_h_in;
+wire [14:0] data_out;
 
 decod dec (data_h_in, data_out);
 
@@ -11,45 +11,15 @@ initial begin
 end
 
 initial begin
-        data_h_in=7'b0110100;
+        data_h_in=15'b101101001010101;
         #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b0110101;
+        $display("in=%b", data_h_in);
+        $display("true=%b", data_out);
         #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b0001101;
+        data_h_in=15'b101101001010111;
         #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b0011101;
-        #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b0011010;
-        #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b0001010;
-        #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b1010001;
-        #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
-        #208;
-        data_h_in=7'b1010101;
-        #28;
-        $display("in=%d", data_h_in);
-        $display("true=%d", data_out);
+        $display("in=%b", data_h_in);
+        $display("true=%b", data_out);
         #208;
         $finish;
 end

@@ -11,16 +11,41 @@ initial begin
 end
 
 initial begin
-        data_in=11'b11110000111;
+        data_in=11'b11110001111;
         #28;
         $display("in=%b", data_in);
         $display("true=%b", data_h_out);
-        #208;
-        data_in=11'b00000000001;
+        #28;
+        data_in=11'b0000001111;
         #28;
         $display("in=%b", data_in);
         $display("true=%b", data_h_out);
-        #208;
+        #28;
+        data_in=11'b11111100000;
+        #28;
+        $display("in=%b", data_in);
+        $display("true=%b", data_h_out);
+        #28;
+        data_in=11'b11111111111;
+        #28;
+        $display("in=%b", data_in);
+        $display("true=%b", data_h_out);
+        #28;
+        data_in=11'b00000000000;
+        #28;
+        $display("in=%b", data_in);
+        $display("true=%b", data_h_out);
+        #28;
+        data_in=11'b10101010101;
+        #28;
+        $display("in=%b", data_in);
+        $display("true=%b", data_h_out);
+        #28;
+        data_in=11'b01010101010;
+        #28;
+        $display("in=%b", data_in);
+        $display("true=%b", data_h_out);
+        #28;
         $finish;
 end
 endmodule

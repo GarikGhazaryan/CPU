@@ -1,9 +1,9 @@
 module Ham (in_dat, true_dat);
 
-input [3:0] in_dat;
-output [6:0] true_dat;
+input [10:0] in_dat;
+output [14:0] true_dat;
 
-wire [6:0] h_dat;
+wire [14:0] h_dat;
 
 encod en (.data_in(in_dat), .data_h_out(h_dat));
 
