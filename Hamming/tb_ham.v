@@ -2,7 +2,7 @@ module tb();
 
 reg clk, rst, en;
 
-wire [10:0] true_dat;
+wire [14:0] true_dat;
 
 Ham H (clk, rst, en, true_dat);
 

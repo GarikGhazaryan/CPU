@@ -1,4 +1,4 @@
-module tb();
+module tb1();
 
 reg clk, rst, en;
 wire [10:0] lfsr_out;
